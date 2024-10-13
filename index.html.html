@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnoCalc - Innohep Dose Calculator</title>
+  <style>
+    body {
+      font-family: 'Gilroy', sans-serif;
+      background-color: #ffffff;
+      color: #19475d;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #19475d;
+      color: #ffffff;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      height: 100px;
+      margin: 0 15px;
+    }
+
+    h1 {
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    .calculator {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      border: 3px solid #8cb811;
+      border-radius: 15px;
+      background-color: #f7f8f7;
+    }
+
+    h2 {
+      color: #8cb811;
+      font-size: 40px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-size: 24px;
+    }
+
+    input {
+      padding: 15px;
+      font-size: 20px;
+      border: 2px solid #19475d;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 24px;
+      background-color: #8cb811;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #19475d;
+      color: #8cb811;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #19475d;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABQCAYAAABUj6pDAAAA..." alt="Biopharma Logo" class="logo">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABQCAYAAABUj6pDAAAA..." alt="Innohep Logo" class="logo">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABQCAYAAABUj6pDAAAA..." alt="LEO Logo" class="logo">
+    </div>
+    <h1>InnoCalc: Innohep Dose Calculator</h1>
+  </header>
+
+  <section class="calculator">
+    <h2>Calculate Your Innohep Dose Based on Body Weight</h2>
+    <form id="doseForm">
+      <label for="weight">Enter your weight (kg):</label>
+      <input type="number" id="weight" name="weight" min="32" max="105" required>
+      <button type="submit">Calculate Dose</button>
+    </form>
+    <div id="result" class="result"></div>
+  </section>
+
+  <footer>
+    <p>© 2024 Biopharma MEA. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('doseForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const weight = document.getElementById('weight').value;
+      let dose, volume;
+
+      if (weight >= 32 && weight <= 37) { dose = 6000; volume = 0.30; }
+      else if (weight >= 38 && weight <= 42) { dose = 7000; volume = 0.35; }
+      else if (weight >= 43 && weight <= 48) { dose = 8000; volume = 0.40; }
+      else if (weight >= 49 && weight <= 54) { dose = 9000; volume = 0.45; }
+      else if (weight >= 55 && weight <= 59) { dose = 10000; volume = 0.50; }
+      else if (weight >= 60 && weight <= 65) { dose = 11000; volume = 0.55; }
+      else if (weight >= 66 && weight <= 71) { dose = 12000; volume = 0.60; }
+      else if (weight >= 72 && weight <= 77) { dose = 13000; volume = 0.65; }
+      else if (weight >= 78 && weight <= 82) { dose = 14000; volume = 0.70; }
+      else if (weight >= 83 && weight <= 88) { dose = 15000; volume = 0.75; }
+      else if (weight >= 89 && weight <= 94) { dose = 16000; volume = 0.80; }
+      else if (weight >= 95 && weight <= 99) { dose = 17000; volume = 0.85; }
+      else if (weight >= 100 && weight <= 105) { dose = 18000; volume = 0.90; }
+      else { dose = 'Invalid weight'; volume = ''; }
+
+      document.getElementById('result').textContent = `Dose: ${dose} IU, Volume: ${volume} ml`;
+    });
+  </script>
+</body>
+</html>
